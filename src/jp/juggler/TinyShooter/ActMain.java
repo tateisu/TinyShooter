@@ -61,6 +61,7 @@ public class ActMain extends Activity {
 			super(ActMain.this);
 			// サーフェスがGLオブジェクトを作成する際にラッパーをかぶせる
 			setGLWrapper(new GLSurfaceView.GLWrapper() {
+				@Override
 				public GL wrap(GL gl) {
  	                return new MatrixTrackingGL(gl,log);
  	            }
@@ -78,6 +79,7 @@ public class ActMain extends Activity {
 		@Override
 		public boolean onTouchEvent(final MotionEvent event) {
 			queueEvent(new Runnable() {
+				@Override
 				public void run() {
 					renderer.onTouch(event);
 				}

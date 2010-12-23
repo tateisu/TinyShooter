@@ -145,7 +145,8 @@ public class MyRenderer implements GLSurfaceView.Renderer{
         Expl.list.clear();
     }
 
-    public synchronized void onSurfaceCreated(GL10 gl, EGLConfig config) {
+    @Override
+	public synchronized void onSurfaceCreated(GL10 gl, EGLConfig config) {
     	log.d("onSurfaceCreated config=%s",config.getClass().getName());
     	
         /*
@@ -253,7 +254,8 @@ public class MyRenderer implements GLSurfaceView.Renderer{
     int mHeight;
     float field_density;
     
-    public synchronized void onSurfaceChanged(GL10 gl, int w, int h) {
+    @Override
+	public synchronized void onSurfaceChanged(GL10 gl, int w, int h) {
         log.d("onSurfaceChanged size=%dx%d,density=%f",w,h,metrics.density);
         mWidth  = w;
         mHeight = h;
@@ -361,7 +363,8 @@ public class MyRenderer implements GLSurfaceView.Renderer{
     long nLiveTime = 0;
 
    
-    public synchronized void onDrawFrame(GL10 gl) {
+    @Override
+	public synchronized void onDrawFrame(GL10 gl) {
         /*
          * By default, OpenGL enables features that improve quality
          * but reduce performance. One might want to tweak that
@@ -623,6 +626,7 @@ public class MyRenderer implements GLSurfaceView.Renderer{
     }
     static class TouchInfo extends ListWithPool.Item{
     	static ListWithPool<TouchInfo> list = new ListWithPool<TouchInfo>(3,new ItemFactory<TouchInfo>() {
+			@Override
 			public TouchInfo create() { return new TouchInfo(); }
 		});
     	int x;
@@ -1024,6 +1028,7 @@ class Meca1{
 class Meca2 extends ListWithPool.Item{
 	static ScaledSprite sprite;
     static ListWithPool<Meca2> list = new ListWithPool<Meca2>(100,new ItemFactory<Meca2>() {
+		@Override
 		public Meca2 create() { return new Meca2(); }
 	});
 
@@ -1080,6 +1085,7 @@ class Meca2 extends ListWithPool.Item{
 class Tama1 extends ListWithPool.Item{
 	static ScaledSprite sprite;
     static ListWithPool<Tama1> list = new ListWithPool<Tama1>(1000,new ItemFactory<Tama1>() {
+		@Override
 		public Tama1 create() { return new Tama1(); }
 	});
 
@@ -1128,6 +1134,7 @@ class Tama1 extends ListWithPool.Item{
 class Tama2 extends ListWithPool.Item {
 	static ScaledSprite sprite;
     static ListWithPool<Tama2> list = new ListWithPool<Tama2>(4,new ItemFactory<Tama2>() {
+		@Override
 		public Tama2 create() { return new Tama2(); }
 	});
 	
@@ -1173,6 +1180,7 @@ class Tama2 extends ListWithPool.Item {
 class Expl extends ListWithPool.Item {
 	static ScaledSprite sprite;
     static ListWithPool<Expl> list = new ListWithPool<Expl>(128,new ItemFactory<Expl>() {
+		@Override
 		public Expl create() { return new Expl(); }
 	});
 	
